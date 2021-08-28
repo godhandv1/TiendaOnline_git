@@ -1,9 +1,7 @@
 {
-    "mercado_libre_api": {
-        "client_secret": "",
-        "client_id": "",
-        "redirect_uris": "",
-        "email": "",
-        "password": ""
+    ML {
+        site: 'MLM',
+        authUsrPwd: 'User:Password',
+        apiUrl: 'https://externalapi-dev-url:8443/axl/'
     }
 }
