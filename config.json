@@ -1,0 +1,9 @@
+{
+    "mercado_libre_api": {
+        "client_secret": "",
+        "client_id": "",
+        "redirect_uris": "",
+        "email": "",
+        "password": ""
+    }
+}
