@@ -17,26 +17,8 @@
     <link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-        
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-        
-        #ARTICULO-ML {
-            display: flex-between;
-        }
-    </style>
 
+    <link rel="stylesheet" href="./styles.css">
 
     <!-- Custom styles for this template -->
     <link href="form-validation.css" rel="stylesheet">
@@ -51,21 +33,26 @@
             <nav class="navbar navbar-expand-xl navbar-light navbar sticky-top navbar-light bg-dark">
                 <div class="container-fluid">
                     <a class="navbar-brand text-white" href="/index.html">Shop Online</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
                     <div class="collapse navbar-collapse" id="navbarScroll">
-                        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+                            style="--bs-scroll-height: 100px;">
                             <li class="nav-item">
                                 <a class="nav-link active text-white" aria-current="page" href="/index.html">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="#" onclick="execute('Tendencia');">Tendencias ML</a>
+                                <a class="nav-link text-white" href="#" onclick="execute('Tendencia');">Tendencias
+                                    ML</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Link
-                        </a>
+                                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarScrollingDropdown"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Link
+                                </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                                     <li><a class="dropdown-item" href="#">Action</a></li>
                                     <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -76,11 +63,13 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link disabled text-white" href="#" tabindex="-1" aria-disabled="true">Link</a>
+                                <a class="nav-link disabled text-white" href="#" tabindex="-1"
+                                    aria-disabled="true">Link</a>
                             </li>
                         </ul>
                         <form class="d-flex">
-                            <input id="busqueda" class="form-control me-2" type="search" placeholder="Búscar un artículo" aria-label="Search">
+                            <input id="busqueda" class="form-control me-2" type="search"
+                                placeholder="Búscar un artículo" aria-label="Search">
                             <a class="btn btn-outline-success" onclick="searchArticle()" type="submit">Buscar</a>
                         </form>
                     </div>

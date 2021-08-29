@@ -1,9 +1,14 @@
+//LLamado de Variables de entorno 
+/* require('dotenv').config(); */
+//Objeto para  carrito  de compras
 class ShopingCart {
+    //Constructor el cual sirve para guardar tod lo que el usuario quiera comprar 
     constructor() {
         this.articles = [];
         this.total = 0;
         this.pagado = false;
     }
+    //Agrega un articulo al carrito de compra 
     addCart(articulo) {
         console.log(`valor del boton pulsado --- > nombre ${articulo[0]} precio ${articulo[1]}  id  ${articulo[2]}`);
         console.log('Se va a agregar un articulo al carrito');
@@ -11,6 +16,7 @@ class ShopingCart {
         const carrito = new ShopingCart('Carrito');
         carrito.addArticle(articulo);
     }
+    //Recibe la informacion de la api de mercado libre y la almacena
     addArticle(article) {
         console.log(`Esto se va a pushear a la variable   ${article}`)
         this.articles.push(article);
@@ -31,6 +37,7 @@ class ShopingCart {
         objCarrito.getTotalCart(this.articles);
 
     }
+    //Se realiza la suma total de los articulos ingresados en el carrito
     getTotalCart(price) {
         console.log(`Este es el total del carrito  ----> ${price}`);
         if (this.total == 0) {
@@ -45,12 +52,14 @@ class ShopingCart {
 
     }
 }
-
+// objeto que obtiene y muestra los elementos de la api
 class Articulo {
+    //se gurda la data enviada de la api de mercado libre y la almacena una por una 
     constructor(data) {
         this.data = data;
 
     }
+    //Hace la solicitud a la api de la informacion solicitada 
     static async getArticle(opc, articleSearch) {
         let url;
         let type;
@@ -77,9 +86,12 @@ class Articulo {
         let resp = await fetch(url);
         let data = await resp.json();
         let datosArticulo = new Articulo(data);
+        let datosArticuloTrend = new Articulo(data);
 
         //console.log(`Datos obtenidos ${JSON.stringify(data)}`);
         await datosArticulo.CreateArticle(type);
+        await datosArticuloTrend.CreateArticle(type);
+
     }
 
     async CreateArticle(type) {
@@ -139,3 +151,56 @@ const searchArticle = () => {
     console.log(`Se obtuvo la búsqueda ${articleSearch}`);
     execute("Busqueda", articleSearch);
 };
+/* 
+class Trend {
+  constructor{
+
+    this.data = data;
+
+}
+
+
+static async getArticleTrend(opc, articleSearch) {
+    let url;
+    let type;
+    
+            url = `https://api.mercadolibre.com/trends/MLM/MLM1055`;
+            console.log(`Entramos en las Tendencias`);
+            type = articleDivTrend;
+    
+
+    let resp = await fetch(url);
+    let data = await resp.json();
+    
+    let datosArticuloTrend = new Articulo(data);
+
+    //console.log(`Datos obtenidos ${JSON.stringify(data)}`);
+  
+    await datosArticuloTrend.CreateArticle(type);
+
+}
+
+async CreateArticleTrend(type) {
+    let j = 0;
+    for (let i = 0; i < this.data.results.length; i++) {
+        const divProducts = document.createElement("div");
+        divProducts.setAttribute("id", "p" + i);
+        divProducts.setAttribute("class", "Card");
+        let producto = `
+        <div class = "card" style = "width: 18rem; margin-top: 20px">
+            <img src = ${this.data.results[i].thumbnail}/50px90/" alt = "Card image cap" > 
+                <div class = "card-title form-control" " > 
+                    <h5 id = ${this.data.results[i].id} class = "card-title"> ${this.data.results[i].title}</h5>
+                    <h3 id=${j}>$${this.data.results[i].price}</h3 > 
+                    <a is= "5" name= "${this.data.results[i].title}" value = "${this.data.results[i].price}" class = "btn btn-primary" id = "Boton ${j}" onclick ="carrito.addCart('${this.data.results[i].title}','${this.data.results[i].price}','${this.data.results[i].id}');" > Agregar al carrito </a>
+                </div>
+        </div>`;
+        divProducts.innerHTML += producto;
+        type.appendChild(divProducts);
+
+        j += 1;
+
+    }
+}
+}
+} */
