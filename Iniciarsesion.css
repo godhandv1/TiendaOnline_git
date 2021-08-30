@@ -1,0 +1,16 @@
+.conteiner{
+   
+    background-image:url("https://image.freepik.com/vector-gratis/fondo-azul-modelo-grunge_1409-1359.jpg");
+   background-position: 50% 50% ;
+   color: white;
+   font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+  justify-content: center;
+  margin: 300px;
+      
+  /*   justify-content: space-evenly; */
+   
+}
