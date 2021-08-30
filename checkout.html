@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.80.0">
+    <title>Tecla Tienda Online</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/checkout/">
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+        
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+</head>
+
+<body class="bg-light  row justify-content-md-center">
+
+    <div class="container-fluid">
+        <main>
+            <div class="py-5 text-center">
+                <!--<img class="d-block mx-auto mb-4" src="./assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+               -->
+                <h2>Datos del pago</h2>
+                <p class="lead">Por favor ingresa tus datos de pago para proceder con el envío de tus productos</p>
+            </div>
+    </div>
+    <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Ingresa tus datos</h4>
+        <form class="needs-validation" novalidate>
+            <div class="row g-3">
+                <div class="col-sm-6">
+                    <label for="firstName" class="form-label">Nombre(s)</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                        El campo de nombre es requerido
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="lastName" class="form-label">Apellidos</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                        El campo de apellidos es requerido
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <label for="username" class="form-label">Correo eléctronico</label>
+                    <div class="input-group has-validation">
+                        <span class="input-group-text">@</span>
+                        <input type="text" class="form-control" id="username" placeholder="ejemplo@dominio.com" required>
+                        <div class="invalid-feedback">
+                            El correo es requerido
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <label for="email" class="form-label">Correo secundario <span class="text-muted">(Opcional)</span></label>
+                    <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                    <div class="invalid-feedback">
+                        ingrese un correo valido por favor.
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <label for="address" class="form-label">Dirección</label>
+                    <input type="text" class="form-control" id="address" placeholder="Calle, número, código postal, colonia y delegación" required>
+                    <div class="invalid-feedback">
+                        Por favor ingrese una dirección de envio
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <label for="address2" class="form-label">Dirección 2 <span class="text-muted">(Optional)</span></label>
+                    <input type="text" class="form-control" id="address2" placeholder="Calle, número, código postal, colonia y delegación">
+                </div>
+
+                <div class="col-md-5">
+                    <label for="country" class="form-label">Ciudad</label>
+                    <select class="form-select" id="country" required>
+                <option value="">Seleccione...</option>
+                <option>Ciudad de México</option>
+              </select>
+                    <div class="invalid-feedback">
+                        Seleccione una ciudad dentro de las opciones.
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="zip" class="form-label">Código Postal</label>
+                    <input type="text" class="form-control" id="zip" placeholder="" required>
+                    <div class="invalid-feedback">
+                        Código postal requerido
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4">
+
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="same-address">
+                <label class="form-check-label" for="same-address">Mi dirección de envío es mi dirección de facturación</label>
+            </div>
+
+            <hr class="my-4">
+
+            <h4 class="mb-3">Método de Pago</h4>
+
+            <div class="my-3">
+                <div class="form-check">
+                    <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+                    <label class="form-check-label" for="credit">Tarjeta de crédito</label>
+                </div>
+                <div class="form-check">
+                    <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
+                    <label class="form-check-label" for="debit">Tarjeta de debito</label>
+                </div>
+            </div>
+
+            <div class="row gy-3">
+                <div class="col-md-6">
+                    <label for="cc-name" class="form-label">Nombre en la tarjeta</label>
+                    <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                    <small class="text-muted">Nombre completo como aparece en la tarjeta</small>
+                    <div class="invalid-feedback">
+                        El nombre de la tarjeta es requerido
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="cc-number" class="form-label">Número de tarjeta</label>
+                    <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                    <div class="invalid-feedback">
+                        El número de la tarjeta es requerido
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="cc-expiration" class="form-label">Fecha de expiración</label>
+                    <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                    <div class="invalid-feedback">
+                        La fecha de expiración es requerida
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="cc-cvv" class="form-label">CVV</label>
+                    <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                    <div class="invalid-feedback">
+                        El código de seguridad es requerido
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4">
+
+            <button class="w-100 btn btn-primary btn-lg" type="submit">Confirmar pago</button>
+        </form>
+    </div>
+    </div>
+    </main>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2017–2021 Company Name</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Privacy</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+    </footer>
+    </div>
+
+
+    <script src="/assets/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="form-validation.js"></script>
+</body>
+
+</html>

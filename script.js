@@ -5,6 +5,9 @@ class ShopingCart {
         this.pagado = false;
     }
     addCart(articulo) {
+
+        // let articulo = [name, price, id];
+        console.log("articulo que queremos agregar ---->" + articulo);
         console.log(`valor del boton pulsado --- > nombre ${articulo[0]} precio ${articulo[1]}  id  ${articulo[2]}`);
         console.log('Se va a agregar un articulo al carrito');
 
@@ -32,16 +35,15 @@ class ShopingCart {
 
     }
     getTotalCart(price) {
-        console.log(`Este es el total del carrito  ----> ${price}`);
+        console.log(`Este es el total del carrito  ----> ${price[0][1]}`);
         if (this.total == 0) {
-            this.total = price[1];
-            console.log(`Total carrito ---> ${JSON.stringify(this.total)}`);
+            this.total = price[0][1];
         } else {
-            this.total += price[1];
-            console.log(`Total carrito ---> ${JSON.stringify(this.total)}`);
-
-
+            this.total += price[0][1];
         }
+
+        totalCart.innerHTML = this.total;
+
 
     }
 }
@@ -56,17 +58,18 @@ class Articulo {
         let type;
         switch (opc) {
             case "Inicio":
-                url = `https://api.mercadolibre.com/sites/MLM/search?category=MLM1051`;
+                url = 'https://api.mercadolibre.com/sites/MLM/search?category=MLM1051';
                 type = articleDiv;
                 break;
             case "Busqueda":
                 url = `https://api.mercadolibre.com/sites/MLM/search?q=${articleSearch}`;
-                console.log(`Entramos en la búsqueda ${articleSearch}`);
-                type = "busqueda";
+                console.log(`Entramos en la búsqueda ${articleSearch}
+                URL de la búsqueda ${url}`);
+                type = articleDiv;
 
                 break;
             case "Tendencia":
-                url = `https://api.mercadolibre.com/trends/MLM/MLM1055`;
+                url = 'https://api.mercadolibre.com/trends/MLM/MLM1055';
                 console.log(`Entramos en las Tendencias`);
                 type = articleDivTrend;
                 break;
@@ -76,6 +79,9 @@ class Articulo {
 
         let resp = await fetch(url);
         let data = await resp.json();
+
+
+        //console.log(`Datos del API ---> ${JSON.stringify(data)}`);
         let datosArticulo = new Articulo(data);
 
         //console.log(`Datos obtenidos ${JSON.stringify(data)}`);
@@ -84,24 +90,36 @@ class Articulo {
 
     async CreateArticle(type) {
         let j = 0;
-        for (let i = 0; i < this.data.results.length; i++) {
-            const divProducts = document.createElement("div");
-            divProducts.setAttribute("id", "p" + i);
-            divProducts.setAttribute("class", "Card");
-            let producto = `
+
+        console.log(`Tamaño de la respuesta ${this.data.length}`)
+        console.log(`datos de tendencia ${this.data}`)
+        if (type == articleDivTrend) {
+            for (let i = 0; i < this.data.length; i++) {
+                let artTrend = JSON.stringify(this.data[i].keyword);
+                console.log(`artTrend sin comillas ---> ${artTrend.replace(/\"/g, "")}`);
+                Articulo.getArticle('Busqueda', artTrend.replace(/\"/g, ""));
+
+            }
+
+        } else {
+            for (let i = 0; i < this.data.results.length; i++) {
+                const divProducts = document.createElement("div");
+                divProducts.setAttribute("id", "p" + i);
+                divProducts.setAttribute("class", "Card");
+                let producto = `
             <div class = "card" style = "width: 18rem; margin-top: 20px">
                 <img src = ${this.data.results[i].thumbnail}/50px90/" alt = "Card image cap" > 
                     <div class = "card-title form-control" " > 
                         <h5 id = ${this.data.results[i].id} class = "card-title"> ${this.data.results[i].title}</h5>
                         <h3 id=${j}>$${this.data.results[i].price}</h3 > 
-                        <a is= "5" name= "${this.data.results[i].title}" value = "${this.data.results[i].price}" class = "btn btn-primary" id = "Boton ${j}" onclick ="carrito.addCart('${this.data.results[i].title}','${this.data.results[i].price}','${this.data.results[i].id}');" > Agregar al carrito </a>
+                        <a is= "5" name= "${this.data.results[i].title}" value = "${this.data.results[i].price}" class = "btn btn-primary" id = "Boton ${j}" onclick ="cart.addCart(['${this.data.results[i].title}','${this.data.results[i].price}','${this.data.results[i].id}']);" > Agregar al carrito </a>
                     </div>
             </div>`;
-            divProducts.innerHTML += producto;
-            type.appendChild(divProducts);
+                divProducts.innerHTML += producto;
+                type.appendChild(divProducts);
 
-            j += 1;
-
+                j += 1;
+            }
         }
     }
 }
@@ -120,12 +138,14 @@ const execute = (opc, a) => {
             Articulo.getArticle("Busqueda", a);
             break;
         default:
+            console.log(`Se va a ejecutar el caso por default`);
+            Articulo.getArticle("Inicio");
             break;
     }
 };
 
-execute("Inicio");
-const carrito = new ShopingCart('Carrito');
+execute();
+const cart = new ShopingCart('Carrito');
 /*
 let articulo = ["camisa", 203, 10001];
 prueba.addArticle(articulo);

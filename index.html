@@ -1,23 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8"></meta>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.80.0">
+    <meta name="description" content=" ">
+    <meta name="author" content="Leonardo Daniel Figueroa Guel && Kevin David Tames Hernandez">
+    <meta name="generator" content="ShopOnline Tecla 1.1">
     <title>Tecla Tienda Online</title>
-
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/checkout/">
-
-
-
-    <!-- Bootstrap core CSS -->
     <link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="./styles.css">
 
-
+    <link rel="stylesheet" href="./styles.css">
 
 
     <!-- Custom styles for this template -->
@@ -28,84 +22,71 @@
 
     <div class="container">
         <main>
-            <!--  <input type="text" class="form-control" id="busqueda" aria-describedby="emailHelp" placeholder="Búsqueda de artículos">
-            <button type="submit" onclick="searchArticle()" class="btn btn-secondary">Buscar</button>-->
-            <nav class="navbar navbar-expand-xl navbar-light navbar sticky-top navbar-light bg-dark">
+            <nav class="navbar navbar-expand-xl navbar sticky-top bg-dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand text-white" href="#">Shop Online</a>
+                    <a class="navbar-brand text-white" href="#" onclick="execute('Inicio')">Shop Online</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
                     <div class="collapse navbar-collapse" id="navbarScroll">
                         <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                             <li class="nav-item">
-                                <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
+                                <a class="nav-link active text-white" aria-current="page" href="/index.html">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="./tendencias.html" onclick="getTendencias();">Tendencias ML</a>
+                                <a class="nav-link text-white" href="./tendencias.html" onclick="execute('Tendencia');">Tendencias ML</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle text-white" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Link
+                          Usuario
                         </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                                     <li><a class="dropdown-item" href="./Login.html">Iniciar Sesion</a></li>
-                                    <li><a class="dropdown-item" href="#">Registarse</a></li>
+                                    <li><a class="dropdown-item" href="./register.html">Registarse</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>00
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link disabled text-white" href="#" tabindex="-1" aria-disabled="true">Link</a>
+                                <a class="nav-link text-white "   href="./checkout.html" >CheckOut</a>
                             </li>
                         </ul>
                         <form class="d-flex">
                             <input id="busqueda" class="form-control me-2" type="search" placeholder="Búscar un artículo" aria-label="Search">
-                            <button class="btn btn-outline-success" onclick="searchArticle()" type="submit">Buscar</button>
+                            <a class="btn btn-outline-success" onclick="searchArticle()" type="submit">Buscar</a>
                         </form>
                     </div>
                 </div>
             </nav>
-            <div class="d-flex justify-content-end">
-                <div class="col-md-5 col-lg-4 order-md-last">
-                    <h4 class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="text-muted">Tu carrito</span>
+            <div class="container d-flex justify-content-end position-sticky form-control">
+                <div class="col-md-3 order-md-last position-sticky">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3 form-control">
+                        <span class="text-muted" id="yourCart">Tu carrito</span>
                         <span class="badge bg-secondary rounded-pill">3</span>
                     </h4>
-                    <ul class="list-group mb-3">
+                    <ul class="list-group mb-3" id="listCart">
                         <li class="list-group-item d-flex justify-content-between lh-sm">
-                            <div>
-                                <h6 class="my-0" id="nameProduct">Producto</h6>
-                                <small class="text-muted" id="description">Descripción del producto</small>
-                            </div>
-                            <span class="text-muted">$12</span>
+
+                            <h6 class="my-0" id="nameProduct"></h6>
+                            <span class="text-muted" id="priceCart"></span>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between lh-sm">
-                            <div>
-                                <h6 class="my-0">Second product</h6>
-                                <small class="text-muted">Brief description</small>
-                            </div>
-                            <span class="text-muted">$8</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between lh-sm">
-                            <div>
-                                <h6 class="my-0">Third item</h6>
-                                <small class="text-muted">Brief description</small>
-                            </div>
-                            <span class="text-muted">$5</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between bg-light">
+
+
+                    </ul>
+
+                    <ul>
+                        <li class="list-group-item d-flex justify-content-between bg-light ">
                             <div class="text-success">
-                                <h6 class="my-0">Promo code</h6>
+                                <h6 class="my-0">Código aplicado</h6>
                                 <small>EXAMPLECODE</small>
                             </div>
                             <span class="text-success">−$5</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between">
-                            <span>Total (USD)</span>
-                            <strong>$20</strong>
+                            <span>Total (MNX)</span>
+                            <strong id="totalCart"></strong>
                         </li>
                     </ul>
 
@@ -120,16 +101,14 @@
                 </div>
 
                 <hr class="my-4">
+
+                </form>
                 <form>
-
-                    <div class="container">
-                        <div class="row" id="articleDiv">
-
-                        </div>
+                    <div id="articleDivTrend"></div>
+                    <div class="container" id="articleDiv" style="margin-top: 20px; display: flex; justify-content: space-around; flex-wrap: wrap; align-items: flex-start;">
 
                     </div>
             </div>
-            </form>
             </form>
 
     </div>
@@ -147,9 +126,9 @@
     </div>
 
 
-    <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="./assets/dist/js/form-validation.js"></script>
+    <script src="/assets/dist/js/form-validation.js"></script>
     <script src="script.js"></script>
 </body>
 
